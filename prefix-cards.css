@@ -1,0 +1,45 @@
+/* enable glow to be visible outside the card */
+.card,
+.mod-card-prefix { position: relative; overflow: visible; }
+
+/* the little tag */
+.mod-prefix-box {
+  position: absolute;
+  bottom: 14px;     /* higher than before */
+  right: 10px;      /* a tad left */
+  padding: 3px 8px;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1;
+  font-weight: 800;
+  letter-spacing: .5px;
+  color: #fff;
+  background: rgba(0,0,0,.65);
+  text-transform: uppercase;
+  pointer-events: none;
+  z-index: 4;
+}
+
+/* colored variants */
+.mod-prefix-box[data-type="Angelic"]  { background: linear-gradient(90deg,#ffe68f,#ffb347); color:#232018; }
+.mod-prefix-box[data-type="Demonic"]  { background: linear-gradient(90deg,#5a0000,#ff2b2b); }
+.mod-prefix-box[data-type="Ethereal"] { background: linear-gradient(90deg,#75e5ff,#908dff); }
+.mod-prefix-box[data-type="Cursed"]   { background: linear-gradient(90deg,#161616,#4a4a4a); }
+
+/* A U R A  (glow sits behind content) */
+.mod-card-prefix::after {
+  content:"";
+  position:absolute;
+  inset:-6px;                 /* extend a little outside */
+  border-radius:10px;
+  z-index:1;                  /* behind the label */
+  pointer-events:none;
+  opacity:.9;
+  transition:opacity .2s ease;
+}
+
+/* per-type glow colors */
+.mod-angelic::after  { box-shadow:0 0 34px 8px rgba(255,240,180,.85); }
+.mod-demonic::after  { box-shadow:0 0 36px 10px rgba(255, 40, 40,.85); }
+.mod-ethereal::after { box-shadow:0 0 36px 10px rgba(160,180,255,.85); }
+.mod-cursed::after   { box-shadow:0 0 36px 10px rgba(150,  0,255,.75); }
